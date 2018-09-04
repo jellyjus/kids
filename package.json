@@ -8,6 +8,9 @@
     "test:unit": "vue-cli-service test:unit"
   },
   "dependencies": {
+    "axios": "^0.18.0",
+    "element-ui": "^2.4.6",
+    "npm": "^6.4.1",
     "vue": "^2.5.17"
   },
   "devDependencies": {
