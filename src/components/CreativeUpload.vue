@@ -34,7 +34,7 @@
             </el-col>
 
             <el-col :span="12">
-                <el-col :span="6" v-for="(typeValue, typeKey) in types[type]" :key="typeKey">
+                <el-col :span="6" v-for="(typeValue, typeKey) in types[type]" :key="typeKey" class="type-column">
                     <i :class="[typeValue.icon, 'fa', 'dimension-icon']"></i>
                     <div :class="[{'dimension-active': dimension === currentDimension},'dimension']" v-for="dimension in typeValue.dimensions" @click="currentDimension = dimension">
                         <i class="el-icon-success" v-if="dimensionExists(dimension)"></i>
@@ -138,6 +138,9 @@
                 return isJPG && isLt2M;
             },
             dimensionExists(dimension) {
+                if (!this.creativeSet)
+                    return false;
+
                 const index = this.creativeSet.findIndex(el => el.dimensions.width === dimension.width && el.dimensions.height === dimension.height);
                 if (index !== -1)
                     dimension.assetUrl = this.creativeSet[index].assetUrl;
